@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "ZIyuan_Yang_Comp304_Lab1"
