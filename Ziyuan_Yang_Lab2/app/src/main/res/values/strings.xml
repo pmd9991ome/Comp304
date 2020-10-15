@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ziyuan_Yang_Lab2</string>
+    <string name="ziyuan_checkbox1">Apartment</string>
+    <string name="ziyuan_checkbox2">Detached Home</string>
+    <string name="ziyuan_checkbox3">Semi-detached Home</string>
+    <string name="ziyuan_checkbox4">Condominium Apartment</string>
+    <string name="ziyuan_checkbox5">Town House</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:id="@+id/ziyuan_house"
+    android:icon="@drawable/ic_baseline_house_24"
+    android:title="Apartment"
+    />
+    <item android:id="@+id/ziyuan_detached_home"
+        android:title="Detached Home"
+
+        />
+    <item android:id="@+id/ziyuan_semi_detached_home"
+
+        android:title="Semi_detached Home"
+        />
+    <item android:id="@+id/ziyuan_condo"
+
+        android:title="Condominium Apartment"
+        />
+    <item android:id="@+id/ziyuan_town_house"
+
+        android:title="Town House"
+        />
+
+</menu>
