@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>ziyuan_Canvas_view.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #0000ff;}
+.s3 { color: #808080; font-style: italic;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ziyuan_Canvas_view.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.ziyuanlab3.ui.dashboard;
+
+<span class="s0">import </span>android.content.Context;
+<span class="s0">import </span>android.graphics.Bitmap;
+<span class="s0">import </span>android.graphics.Canvas;
+<span class="s0">import </span>android.graphics.Color;
+<span class="s0">import </span>android.graphics.Paint;
+<span class="s0">import </span>android.util.AttributeSet;
+<span class="s0">import </span>android.view.View;
+
+<span class="s0">public class </span>ziyuan_Canvas_view <span class="s0">extends </span>View {
+
+    <span class="s0">private static final float </span>TOLERANCE = <span class="s2">5</span>;
+    <span class="s0">public int </span>width;
+    <span class="s0">public int </span>height;
+    Context context;
+    <span class="s0">private </span>Bitmap mBitmap;
+    <span class="s0">private </span>Canvas mCanvas;
+
+    <span class="s0">private </span>Paint mPaint;
+
+
+    <span class="s0">public </span>ziyuan_Canvas_view(Context c, AttributeSet attrs) {
+        <span class="s0">super</span>(c, attrs);
+        context = c;
+        <span class="s3">// and we set a new Paint with the desired attributes</span>
+        mPaint = <span class="s0">new </span>Paint();
+        mPaint.setAntiAlias(<span class="s0">true</span>);
+        mPaint.setColor(Color.WHITE);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeWidth(<span class="s2">4f</span>);
+    }
+
+    <span class="s0">public </span>ziyuan_Canvas_view(Context context) {
+        <span class="s0">super</span>(context);
+    }
+
+    <span class="s3">// override onSizeChanged</span>
+    @Override
+    <span class="s0">protected void </span>onSizeChanged(<span class="s0">int </span>w, <span class="s0">int </span>h, <span class="s0">int </span>oldw, <span class="s0">int </span>oldh) {
+        <span class="s0">super</span>.onSizeChanged(w, h, oldw, oldh);
+
+        <span class="s3">// your Canvas will draw onto the defined Bitmap</span>
+        mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mCanvas = <span class="s0">new </span>Canvas(mBitmap);
+    }
+
+    @Override
+    <span class="s0">protected void </span>onDraw(Canvas canvas) {
+        <span class="s0">super</span>.onDraw(canvas);
+
+        <span class="s3">//create and setup the paint object</span>
+        Paint paint = <span class="s0">new </span>Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.parseColor(<span class="s4">&quot;#87CEEB&quot;</span>));
+        <span class="s3">//  paint.setColor(Color.parseColor(&quot;#FFFCBB&quot;));</span>
+        canvas.drawCircle(canvas.getWidth()/<span class="s2">2</span>, canvas.getHeight()*<span class="s2">3</span>/<span class="s2">4</span>, canvas.getWidth()/<span class="s2">4</span>, paint);
+
+        <span class="s3">//  canvas.drawRect(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight(), paint);</span>
+    }
+
+
+}
+</pre>
+</body>
+</html>

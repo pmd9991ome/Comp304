@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>ziyuan_permission.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ziyuan_permission.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.ziyuanlab3.ui.home;
+
+<span class="s0">import </span>android.content.Context;
+<span class="s0">import </span>android.hardware.Camera;
+<span class="s0">import </span>android.util.Log;
+<span class="s0">import </span>android.view.Surface;
+<span class="s0">import </span>android.view.SurfaceHolder;
+<span class="s0">import </span>android.view.SurfaceView;
+<span class="s0">import </span>java.io.IOException;
+
+<span class="s0">public class </span>ziyuan_permission <span class="s0">extends </span>SurfaceView <span class="s0">implements </span>SurfaceHolder.Callback {
+
+    <span class="s0">private static final </span>String TAG = <span class="s2">&quot;CameraPreview&quot;</span>;
+    <span class="s0">private </span>SurfaceHolder mHolder;
+    <span class="s0">private </span>Camera mCamera;
+    <span class="s0">private </span>Camera.CameraInfo mCameraInfo;
+    <span class="s0">private int </span>mDisplayOrientation;
+
+    <span class="s0">public </span>ziyuan_permission(Context context) {
+        <span class="s0">this</span>(context, <span class="s0">null</span>, <span class="s0">null</span>, <span class="s3">0</span>);
+    }
+
+    <span class="s0">public </span>ziyuan_permission(Context context, Camera camera, Camera.CameraInfo cameraInfo,
+                         <span class="s0">int </span>displayOrientation) {
+        <span class="s0">super</span>(context);
+
+        <span class="s4">// Do not initialise if no camera has been set</span>
+        <span class="s0">if </span>(camera == <span class="s0">null </span>|| cameraInfo == <span class="s0">null</span>) {
+            <span class="s0">return</span>;
+        }
+        mCamera = camera;
+        mCameraInfo = cameraInfo;
+        mDisplayOrientation = displayOrientation;
+
+        <span class="s4">// Install a SurfaceHolder.Callback so we get notified when the</span>
+        <span class="s4">// underlying surface is created and destroyed.</span>
+        mHolder = getHolder();
+        mHolder.addCallback(<span class="s0">this</span>);
+    }
+
+
+    <span class="s0">public static int </span>calculatePreviewOrientation(Camera.CameraInfo info, <span class="s0">int </span>rotation) {
+        <span class="s0">int </span>degrees = <span class="s3">0</span>;
+
+        <span class="s0">switch </span>(rotation) {
+            <span class="s0">case </span>Surface.ROTATION_0:
+                degrees = <span class="s3">0</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span>Surface.ROTATION_90:
+                degrees = <span class="s3">90</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span>Surface.ROTATION_180:
+                degrees = <span class="s3">180</span>;
+                <span class="s0">break</span>;
+            <span class="s0">case </span>Surface.ROTATION_270:
+                degrees = <span class="s3">270</span>;
+                <span class="s0">break</span>;
+        }
+
+        <span class="s0">int </span>result;
+        <span class="s0">if </span>(info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            result = (info.orientation + degrees) % <span class="s3">360</span>;
+            result = (<span class="s3">360 </span>- result) % <span class="s3">360</span>;  <span class="s4">// compensate the mirror</span>
+        } <span class="s0">else </span>{  <span class="s4">// back-facing</span>
+            result = (info.orientation - degrees + <span class="s3">360</span>) % <span class="s3">360</span>;
+        }
+
+        <span class="s0">return </span>result;
+    }
+
+    <span class="s0">public void </span>surfaceCreated(SurfaceHolder holder) {
+        <span class="s4">// The Surface has been created, now tell the camera where to draw the preview.</span>
+        <span class="s0">try </span>{
+            mCamera.setPreviewDisplay(holder);
+            mCamera.startPreview();
+            Log.d(TAG, <span class="s2">&quot;Camera preview started.&quot;</span>);
+        } <span class="s0">catch </span>(IOException e) {
+            Log.d(TAG, <span class="s2">&quot;Error setting camera preview: &quot; </span>+ e.getMessage());
+        }
+    }
+
+    <span class="s0">public void </span>surfaceDestroyed(SurfaceHolder holder) {
+        <span class="s4">// empty. Take care of releasing the Camera preview in your activity.</span>
+    }
+
+    <span class="s0">public void </span>surfaceChanged(SurfaceHolder holder, <span class="s0">int </span>format, <span class="s0">int </span>w, <span class="s0">int </span>h) {
+        <span class="s4">// If your preview can change or rotate, take care of those events here.</span>
+        <span class="s4">// Make sure to stop the preview before resizing or reformatting it.</span>
+
+        <span class="s0">if </span>(mHolder.getSurface() == <span class="s0">null</span>) {
+            <span class="s4">// preview surface does not exist</span>
+            Log.d(TAG, <span class="s2">&quot;Preview surface does not exist&quot;</span>);
+            <span class="s0">return</span>;
+        }
+
+        <span class="s4">// stop preview before making changes</span>
+        <span class="s0">try </span>{
+            mCamera.stopPreview();
+            Log.d(TAG, <span class="s2">&quot;Preview stopped.&quot;</span>);
+        } <span class="s0">catch </span>(Exception e) {
+            <span class="s4">// ignore: tried to stop a non-existent preview</span>
+            Log.d(TAG, <span class="s2">&quot;Error starting camera preview: &quot; </span>+ e.getMessage());
+        }
+
+        <span class="s0">int </span>orientation = calculatePreviewOrientation(mCameraInfo, mDisplayOrientation);
+        mCamera.setDisplayOrientation(orientation);
+
+        <span class="s0">try </span>{
+            mCamera.setPreviewDisplay(mHolder);
+            mCamera.startPreview();
+            Log.d(TAG, <span class="s2">&quot;Camera preview started.&quot;</span>);
+        } <span class="s0">catch </span>(Exception e) {
+            Log.d(TAG, <span class="s2">&quot;Error starting camera preview: &quot; </span>+ e.getMessage());
+        }
+    }
+}
+
+</pre>
+</body>
+</html>

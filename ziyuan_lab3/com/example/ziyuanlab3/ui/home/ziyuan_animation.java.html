@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>ziyuan_animation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #808080; font-style: italic;}
+.s3 { color: #0000ff;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ziyuan_animation.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.ziyuanlab3.ui.home;
+
+<span class="s0">import </span>android.os.Bundle;
+<span class="s0">import </span>android.graphics.Bitmap;
+<span class="s0">import </span>android.graphics.Canvas;
+<span class="s0">import </span>android.graphics.Paint;
+<span class="s0">import </span>android.graphics.drawable.AnimationDrawable;
+<span class="s0">import </span>android.graphics.drawable.BitmapDrawable;
+<span class="s0">import </span>android.view.Menu;
+<span class="s0">import </span>android.view.View;
+<span class="s0">import </span>android.view.animation.Animation;
+<span class="s0">import </span>android.widget.Button;
+<span class="s0">import </span>android.widget.ImageView;
+<span class="s0">import </span>android.widget.TextView;
+
+<span class="s0">import </span>androidx.appcompat.app.AppCompatActivity;
+
+<span class="s0">import </span>com.example.ziyuanlab3.R;
+
+<span class="s0">public class </span>ziyuan_animation <span class="s0">extends </span>AppCompatActivity {
+
+    AnimationDrawable mframeAnimation = <span class="s0">null</span>;
+
+    @Override
+    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+        <span class="s0">super</span>.onCreate(savedInstanceState);
+        setContentView(com.example.ziyuanlab3.R.layout.activity_main);
+        <span class="s2">//</span>
+        <span class="s2">// Handle Start Button</span>
+        <span class="s0">final </span>Button onButton = (Button) findViewById(com.example.ziyuanlab3.R.id.ButtonStart);
+        onButton.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            <span class="s0">public void </span>onClick(View v) {
+                startAnimation();
+            }
+        });
+
+        <span class="s2">// Handle Stop Button</span>
+        <span class="s0">final </span>Button offButton = (Button) findViewById(com.example.ziyuanlab3.R.id.ButtonStop);
+        offButton.setOnClickListener(<span class="s0">new </span>View.OnClickListener() {
+            <span class="s0">public void </span>onClick(View v) {
+                stopAnimation();
+            }
+        });
+    }
+
+    <span class="s2">//</span>
+
+    <span class="s0">private void </span>startAnimation()
+    {
+
+        ImageView img = (ImageView)findViewById(com.example.ziyuanlab3.R.id.ImageView_Boy);
+
+        BitmapDrawable frame1 = (BitmapDrawable)getResources().getDrawable(R.drawable.y1);
+        BitmapDrawable frame2 = (BitmapDrawable)getResources().getDrawable(R.drawable.y2);
+        BitmapDrawable frame3 = (BitmapDrawable)getResources().getDrawable(R.drawable.y3);
+        BitmapDrawable frame4 = (BitmapDrawable)getResources().getDrawable(R.drawable.y4);
+        BitmapDrawable frame5 = (BitmapDrawable)getResources().getDrawable(R.drawable.y5);
+        BitmapDrawable frame6 = (BitmapDrawable)getResources().getDrawable(R.drawable.y6);
+
+        <span class="s2">// Get the background, which has been compiled to an AnimationDrawable object.</span>
+        <span class="s0">int </span>reasonableDuration = <span class="s3">250</span>;
+        mframeAnimation = <span class="s0">new </span>AnimationDrawable();
+        mframeAnimation.setOneShot(<span class="s0">false</span>);	<span class="s2">// loop continuously</span>
+        mframeAnimation.addFrame(frame1, reasonableDuration);
+        mframeAnimation.addFrame(frame2, reasonableDuration);
+        mframeAnimation.addFrame(frame3, reasonableDuration);
+        mframeAnimation.addFrame(frame4, reasonableDuration);
+        mframeAnimation.addFrame(frame5, reasonableDuration);
+        mframeAnimation.addFrame(frame6, reasonableDuration);
+        mframeAnimation.addFrame(frame6, reasonableDuration);
+        mframeAnimation.addFrame(frame6, reasonableDuration);
+
+        img.setBackground(mframeAnimation);
+
+        mframeAnimation.setVisible(<span class="s0">true</span>,<span class="s0">true</span>);
+        mframeAnimation.start();
+    }
+    <span class="s0">private void </span>stopAnimation()
+    {
+        mframeAnimation.stop();
+        mframeAnimation.setVisible(<span class="s0">false</span>,<span class="s0">false</span>);
+
+    }
+
+}
+
+</pre>
+</body>
+</html>

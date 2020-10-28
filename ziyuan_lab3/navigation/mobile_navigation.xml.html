@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>mobile_navigation.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000000; font-style: italic;}
+.s1 { color: #0000ff; font-weight: bold;}
+.s2 { color: #000000;}
+.s3 { color: #008000; font-weight: bold;}
+.s4 { color: #000080; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+mobile_navigation.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s3">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s3">=&quot;utf-8&quot;</span><span class="s0">?&gt;</span>
+&lt;<span class="s4">navigation </span><span class="s1">xmlns:android</span><span class="s3">=&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="s1">xmlns:app</span><span class="s3">=&quot;http://schemas.android.com/apk/res-auto&quot;</span>
+    <span class="s1">xmlns:tools</span><span class="s3">=&quot;http://schemas.android.com/tools&quot;</span>
+    <span class="s1">android:id</span><span class="s3">=&quot;@+id/mobile_navigation&quot;</span>
+    <span class="s1">app:startDestination</span><span class="s3">=&quot;@+id/navigation_home&quot;</span>&gt;
+
+    &lt;<span class="s4">fragment</span>
+        <span class="s1">android:id</span><span class="s3">=&quot;@+id/ziyuan_home&quot;</span>
+        <span class="s1">android:name</span><span class="s3">=&quot;com.example.ziyuanlab3.ui.home.HomeFragment&quot;</span>
+        <span class="s1">android:label</span><span class="s3">=&quot;@string/title_home&quot;</span>
+        <span class="s1">tools:layout</span><span class="s3">=&quot;@layout/fragment_home&quot; </span>/&gt;
+
+    &lt;<span class="s4">fragment</span>
+        <span class="s1">android:id</span><span class="s3">=&quot;@+id/ziyuan_dashboard&quot;</span>
+        <span class="s1">android:name</span><span class="s3">=&quot;com.example.ziyuanlab3.ui.dashboard.DashboardFragment&quot;</span>
+        <span class="s1">android:label</span><span class="s3">=&quot;@string/title_dashboard&quot;</span>
+        <span class="s1">tools:layout</span><span class="s3">=&quot;@layout/fragment_dashboard&quot; </span>/&gt;
+
+    &lt;<span class="s4">fragment</span>
+        <span class="s1">android:id</span><span class="s3">=&quot;@+id/ziyuan_notifications&quot;</span>
+        <span class="s1">android:name</span><span class="s3">=&quot;com.example.ziyuanlab3.ui.notifications.NotificationsFragment&quot;</span>
+        <span class="s1">android:label</span><span class="s3">=&quot;@string/title_notifications&quot;</span>
+        <span class="s1">tools:layout</span><span class="s3">=&quot;@layout/fragment_notifications&quot; </span>/&gt;
+&lt;/<span class="s4">navigation</span>&gt;</pre>
+</body>
+</html>
