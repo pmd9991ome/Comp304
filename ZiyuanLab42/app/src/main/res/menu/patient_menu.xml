@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ziyuan yang 300868991 -->
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ziyuan_testList"
+        android:title="Test List" />
+    <item
+        android:id="@+id/ziyuan_patientlist"
+        android:title="Patients List"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/ziyuan_addTest"
+        android:title="Add Test" />
+</menu>

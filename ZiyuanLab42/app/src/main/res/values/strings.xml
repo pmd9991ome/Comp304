@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ZiyuanLab4</string>
+    <string-array name="ziyuan_spinner">
+        <item>Dermatology</item>
+        <item>Optometry</item>
+        <item>Surgery</item>
+        <item>Cardiology</item>
+    </string-array>
+</resources>
