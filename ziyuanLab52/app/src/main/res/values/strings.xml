@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ziyuanLab5</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="option1">Help</string>
+    <string name="option2">Location</string>
+    <string name="option3">SMS</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_firstname">First Name</string>
+    <string name="menu_lastname">Last Name</string>
+    <string name="menu_settings">Settings</string>
+
+    <string-array name="course_arrays">
+        <item>Moblie Application Develope</item>
+        <item>Project2</item>
+        <item>Clinical Workflow</item>
+    </string-array>
+    <string name="course_prompt">My Courses</string>
+</resources>

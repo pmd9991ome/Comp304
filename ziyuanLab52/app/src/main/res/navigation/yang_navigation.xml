@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/ziyuan_nav_home">
+
+    <fragment
+        android:id="@+id/ziyuan_nav_home"
+        android:name="ziyuan.yang.s300868991.ui.home.YaHome"
+        android:label="@string/menu_home"
+        tools:layout="@layout/ya_home" />
+
+    <fragment
+        android:id="@+id/ziyuan_nav_firstname"
+        android:name="ziyuan.yang.s300868991.ui.firstname.ZiyDown"
+        android:label="@string/menu_firstname"
+        tools:layout="@layout/ziy_down" />
+
+    <fragment
+        android:id="@+id/ziyuan_nav_lastname"
+        android:name="ziyuan.yang.s300868991.ui.lastname.YaSrv"
+        android:label="@string/menu_lastname"
+        tools:layout="@layout/ya_srv" />
+    <fragment
+        android:id="@+id/ziyuan_nav_settings"
+        android:name="ziyuan.yang.s300868991.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/yang_settings" />
+</navigation>
